@@ -1,6 +1,6 @@
 {
     "images": {
-        "as-he-loved": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2020\/02\/6-As-He-Loved-16x9-cropped.jpg",
+        "as-he-loved": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2020\/02\/6-As-He-Loved-16x9.jpg",
         "encounters-with-jesus": "http:\/\/avalonchurch.org\/wp-content\/uploads\/2020\/02\/Encounters-w-jesus-16x9.jpg",
         "own-the-vision": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2020\/02\/Own-the-Vision-banner.jpg",
         "avalon-church-christmas-series-the-revolution-begins": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2019\/11\/Revolution-Begins-Title-Slide-4x3.jpg",
@@ -8,44 +8,15 @@
         "dust-following-in-the-footsteps-of-jesus": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2019\/07\/Dust-Title-16x9-1.jpg",
         "heaven-on-earth": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2019\/05\/7A8360E7-1154-4698-8D98-303C99DE5B5C.jpeg",
         "faq-series": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2019\/05\/FAQ.jpg",
-        "jesus-nothing": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2019\/02\/Galatians-Main-Slide-Large-1-1080x675.jpg",
-        "jesus-and-we": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/12\/Jesus-and-We-6x4-1080x675.jpg",
-        "combined-service-12-30-18": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/12\/48420151_2277809768904615_6562170378532159488_o-1080x675.jpg",
-        "he-will-be-called": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/11\/He-Will-Be-Called-English-4x3-1080x675.jpg",
+        "jesus-nothing": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2019\/02\/Galatians-Main-Slide-Large-1.jpg",
+        "jesus-and-we": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/12\/Jesus-and-We-6x4.jpg",
+        "combined-service-12-30-18": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/12\/48420151_2277809768904615_6562170378532159488_o.jpg",
+        "he-will-be-called": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/11\/He-Will-Be-Called-English-4x3.jpg",
         "a-heart-to-heart": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/10\/43134796_2150330194985907_7313664053308555264_o.jpg",
-        "go-vision-service": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/09\/GO-Web-slide-1080x675.png",
-        "stories": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/08\/Stories-updated-slide-Medium-1080x675.jpg"
+        "go-vision-service": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/09\/GO-Web-slide.png",
+        "stories": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/08\/Stories-updated-slide-Medium.jpg"
     },
     "podcasts": [
-        {
-            "title": "Foundational Truths For The Believer | PART 1",
-            "track": "01",
-            "title2": "Foundational Truths For The Believer",
-            "series": "Start Here Series",
-            "pubDate": "2020-03-27 10:50:34",
-            "slug": "start-here-series",
-            "link": "https:\/\/www.avalonchurch.org\/2016\/04\/01\/start-here-series\/",
-            "date": "2016-04-03",
-            "speaker": "Pastor Dale Brooks",
-            "audio": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2016\/04\/2016.04.03-Podcast.mp3",
-            "video": null,
-            "desc": "Did you know that you can have Freedom, Victory and Security in Jesus? Sometimes when following God things can get difficult, and sometimes we get bog down with all the \u201cDo\u2019s\u201d and \u201cDon\u2019t s\u201d, the next few weeks we will unpack great truths from Gods word that will help you run the race of faith.",
-            "blurb": "Did you know that you can have Freedom, Victory and Security in Jesus? Sometimes when following God things can get difficult, and sometimes we get bog down with all the \u201cDo\u2019s\u201d and \u201cDon\u2019t s\u201d, the next few weeks we will unpack great truths from Gods word that will help you run the race of faith."
-        },
-        {
-            "title": "Easter Service | March 27, 2016",
-            "title2": "Easter Celebration Service",
-            "series": "Easter Service",
-            "pubDate": "2020-03-27 10:50:34",
-            "slug": "easter-celebration-service",
-            "link": "https:\/\/www.avalonchurch.org\/2016\/04\/01\/easter-celebration-service\/",
-            "date": "2016-03-27",
-            "speaker": "Pastor Dale Brooks",
-            "audio": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2016\/04\/avalonchurch_2016-03-27T08_19_51-07_00.mp3",
-            "video": null,
-            "desc": "Join us this Easter as we celebrate the risen Savior, and unpack a truth that will make you come Alive for the very first time!",
-            "blurb": "Join us this Easter as we celebrate the risen Savior, and unpack a truth that will make you come Alive for the very first time!"
-        },
         {
             "title": "Palm Sunday Service ｜ March 25, 2018",
             "title2": "Palm Sunday | 03.25.18 ",
