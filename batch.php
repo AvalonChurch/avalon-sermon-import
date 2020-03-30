@@ -13,7 +13,7 @@ if (! file_exists($my_dir."/podcasts.json")) {
 $podcasts_data = json_decode(file_get_contents($my_dir."/podcasts.json"), true);
 
 foreach($podcasts_data["podcasts"] as $podcast){
-	// if($podcast['slug'] != 'encounters-with-jesus') continue;
+	// if($podcast['title'] != 'Encounters with Jesus | PART 3') continue;
 	print("PROCESSING: ".$podcast['title']."\n");
 
 	$title = $podcast['title'];
@@ -129,7 +129,7 @@ foreach($podcasts_data["podcasts"] as $podcast){
 				'post_status' => 'publish',
 				'post_type'   => 'wpfc_sermon',
 				'tax_input'   => $tax_input_array,
-				'content'     => $desc,
+				'post_content' => $desc,
             );
             
             print_r(array(
@@ -146,7 +146,7 @@ foreach($podcasts_data["podcasts"] as $podcast){
             ));
 			$post_id = wp_insert_post( $my_post );
 			
-			$sql_prep = $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type = 'attachment' AND post_status = 'inherit'", $title );
+			$sql_prep = $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid = %s AND post_type = 'attachment' AND post_status = 'inherit'", $audio_link );
 			$audio_attach_id = $wpdb->get_var($sql_prep);
 			print_r(array('sql'=>$sql_prep, 'audio_attach_id'=>$audio_attach_id));
 			if ( ! $audio_attach_id ) {
@@ -168,8 +168,31 @@ foreach($podcasts_data["podcasts"] as $podcast){
                 // $attachment_data = wp_generate_attachment_metadata($audio_attach_id, $audio_file_path);
                 // wp_update_attachment_metadata($audio_attach_id, $attachment_data);
 			}
+			$audio_attach_id = intval($audio_attach_id);
+			$rows_affected = $wpdb->update( 
+				$wpdb->posts, 
+				array(
+					'post_title' => $title, 
+					'post_content'=>$title.' by '.$speaker.' from '.$series.'. Released: '.$date['year'], 
+				),
+				array('ID' => $audio_attach_id), 
+				array('%s', '%s'), 
+				array('%d')
+			);
 			$audio_attachment = get_post($audio_attach_id);
-			print_r(array($audio_attach_id, $audio_attachment));
+			$audio_attachment_data = wp_generate_attachment_metadata($audio_attach_id, $audio_file_path);
+        	wp_update_attachment_metadata($audio_attach_id, $audio_attachment_data);
+			var_dump(array(
+				'update'=>array(
+					'post_title' => $title, 
+					'post_content'=>$title.' by '.$speaker.' from '.$series.'. Released: '.$date['year'], 
+					'post_excerpt'=>$comment
+				),
+				'rows_affected'=>$rows_affected, 
+				'audio_attachment_data'=>$audio_attachment_data, 
+				'audio_attach_id' => $audio_attach_id, 
+				'audio_attachment'=>$audio_attachment
+				));
 
 			add_post_meta( $post_id, 'sermon_date', $date['unix_date'], $unique = false );
 			add_post_meta( $post_id, 'bible_passage', $audio['composer'], $unique = false );
