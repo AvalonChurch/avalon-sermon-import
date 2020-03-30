@@ -2,10 +2,10 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @package   Sermon Manager Import
+ * @package   Avalon Sermon Import
  * @author    Kyle Hornberg
  * @license   GPLv3
- * @link      https://github.com/khornberg/sermon-manager-import
+ * @link      https://github.com/khornberg/avalon-sermon-import
  * @copyright 2013 Kyle Hornberg
  */
 

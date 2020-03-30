@@ -2,20 +2,20 @@
 /**
  * Plugin Name.
  *
- * @package   Sermon Manager Import
+ * @package   Avalon Sermon Import
  * @author    Kyle Hornberg
  * @license   GPLv3
- * @link      https://github.com/khornberg/sermon-manager-import
+ * @link      https://github.com/khornberg/avalon-sermon-import
  * @copyright 2013-2015 Kyle Hornberg
  */
 
 /**
  * Plugin class.
  *
- * @package SermonManagerImport
+ * @package AvalonSermonImport
  * @author  Kyle Hornberg
  */
-class SermonManagerImport {
+class AvalonSermonImport {
 
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
@@ -36,7 +36,7 @@ class SermonManagerImport {
 	 *
 	 * @var      string
 	 */
-	protected $plugin_slug = 'sermon-manager-import';
+	protected $plugin_slug = 'avalon-sermon-import';
 
 	/**
 	 * Instance of this class.
@@ -59,7 +59,7 @@ class SermonManagerImport {
 	/**
 	 * Folder location containing sermons
 	 *
-	 * @internal  Default is sermon-manager-import
+	 * @internal  Default is avalon-sermon-import
 	 *
 	 * @since  0.1.0
 	 *
@@ -92,7 +92,7 @@ class SermonManagerImport {
 	protected $messages = array();
 
 	/**
-	 * Sermon manager import options
+	 * Avalon Sermon Import options
 	 *
 	 * @since  0.2.0
 	 *
@@ -105,8 +105,8 @@ class SermonManagerImport {
 	 *
 	 * @since     0.2.0
 	 */
-	private function __construct() {
-		$this->options = get_option( 'smi_options' );
+	public function __construct() {
+		$this->options = get_option( 'asi_options' );
 
 		// Set paths to folders
 		self::set_paths();
@@ -121,7 +121,7 @@ class SermonManagerImport {
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
-		$plugin_basename = plugin_basename( plugin_dir_path( __FILE__ ) . 'sermon-manager-import.php' );
+		$plugin_basename = plugin_basename( plugin_dir_path( __FILE__ ) . 'avalon-sermon-import.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
 		// Load admin style sheet and JavaScript.
@@ -275,7 +275,7 @@ class SermonManagerImport {
 		}
 
 		if ( ! is_plugin_active( 'sermon-manager-for-wordpress/sermons.php' ) ) {
-			$html .= '<div class="updated"><p><a href="http://www.wpforchurch.com/products/sermon-manager-for-wordpress/">Sermon Manager for Wordpress</a> must be activated for Sermon Manager Import plugin to work.</p></div>';
+			$html .= '<div class="updated"><p><a href="http://www.wpforchurch.com/products/sermon-manager-for-wordpress/">Sermon Manager for Wordpress</a> must be activated for Avalon Sermon Import plugin to work.</p></div>';
 			echo $html;
 		}
 	}
@@ -373,8 +373,8 @@ class SermonManagerImport {
 
 		if ( ! is_plugin_active( 'sermon-manager-for-wordpress/sermons.php' ) ) {
 			$this->plugin_screen_hook_suffix = add_plugins_page(
-				__( 'Sermon Manager Import', $this->plugin_slug ),
-				__( 'Import Sermons', $this->plugin_slug ),
+				__( 'Avalon Sermon Import', $this->plugin_slug ),
+				__( 'Import Sermons - AC', $this->plugin_slug ),
 				'upload_files',
 				$this->plugin_slug,
 				array( $this, 'display_plugin_admin_page' )
@@ -383,8 +383,8 @@ class SermonManagerImport {
 		else {
 			$this->plugin_screen_hook_suffix = add_submenu_page(
 				'edit.php?post_type=wpfc_sermon',
-				__( 'Import Sermons', $this->plugin_slug ),
-				__( 'Import Sermons', $this->plugin_slug ),
+				__( 'Import Sermons - AC', $this->plugin_slug ),
+				__( 'Import Sermons - AC', $this->plugin_slug ),
 				'upload_files',
 				$this->plugin_slug,
 				array( $this, 'display_plugin_admin_page' )
@@ -1058,7 +1058,7 @@ class SermonManagerImport {
 	 */
 	public function filter_replace_thickbox_text( $translated_text, $text, $domain ) {
 		if ( 'Insert into Post' == $text ) {
-			$referer = strpos( wp_get_referer(), 'sermon-manager-import' );
+			$referer = strpos( wp_get_referer(), 'avalon-sermon-import' );
 			if ( $referer != '' ) {
 				return __( 'Upload Sermon' );
 			}
@@ -1120,7 +1120,7 @@ class SermonManagerImport {
 
 		return $where;
 	}
-						
+
 	/* KH CUSTOM */
 	/* Adds the abbility to call the import function from other locations outside the class.*/
 	/* With the shortcode [import_all_sermons], you have the ability to call the import-function from outside */
@@ -1137,15 +1137,15 @@ class SermonManagerImport {
 		if ( $post_all ) {
 			$limit = count( $audio_files );
 			$sermon_to_post = 0;
-		} 
+		}
 		// Import the sermon
 		for ( $i=$sermon_to_post; $i < $limit; $i++ ) {
 			$this->import_sermon( $audio_files[$i] );
 			$this->set_message( 'Sermons created' );
 		}
-	}	
+	}
 	/* KH CUSTOM */
-	public function call_import_function() {	
+	public function call_import_function() {
 		if ( ! class_exists( 'getID3' ) ) {
 			if ( file_exists( ABSPATH . WPINC . '/ID3/getid3.php' ) ) {
 				require ABSPATH . WPINC . '/ID3/getid3.php';
@@ -1154,7 +1154,7 @@ class SermonManagerImport {
 				require_once 'assets/getid3/getid3.php';
 			}
 		}
-			$this->import_auto();	
+			$this->import_auto();
 	}
 }
 
@@ -1164,7 +1164,7 @@ class SermonManagerImport {
 	/*          with your script after pushing the new sermon in the import-Folder. */
 	if(!function_exists('import_all_sermons')){
 		function import_all_sermons() {
-			$that = SermonManagerImport::get_instance();
+			$that = AvalonSermonImport::get_instance();
 			$that->call_import_function();
 		}
 	}

@@ -8,7 +8,7 @@
 #prompt for plugin slug
 # echo -e "Plugin Slug: \c"
 # read PLUGINSLUG
-PLUGINSLUG="sermon-manager-import"
+PLUGINSLUG="avalon-sermon-import"
 
 # main config, set off of plugin slug
 CURRENTDIR=`pwd`
@@ -25,11 +25,11 @@ SVNUSER="khornberg" # your svn username
 
 # Let's begin...
 echo ".........................................."
-echo 
+echo
 echo "Preparing to deploy WordPress plugin"
-echo 
+echo
 echo ".........................................."
-echo 
+echo
 
 # Check version in readme.txt is the same as plugin file
 # on ubuntu $GITPATH/readme.txt seems to have an extra /
@@ -60,7 +60,7 @@ echo "Pushing latest commit to origin, with tags"
 # git push origin master
 # git push origin master --tags
 
-echo 
+echo
 echo "Creating local copy of SVN repo ..."
 svn co $SVNURL $SVNPATH
 
@@ -97,7 +97,7 @@ cd $SVNPATH/trunk/
 # Add all new files that are not set to be ignored
 # svn status . --no-ignore
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
-svn commit --username=$SVNUSER -m "$COMMITMSG" 
+svn commit --username=$SVNUSER -m "$COMMITMSG"
 
 echo "Creating new SVN tag & committing it"
 cd $SVNPATH

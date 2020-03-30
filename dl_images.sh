@@ -1,0 +1,15 @@
+curl https://www.avalonchurch.org/wp-content/uploads/2020/02/6-As-He-Loved-16x9-cropped.jpg --create-dirs -o wp-content/uploads/2020/02/6-As-He-Loved-16x9-cropped.jpg
+curl http://avalonchurch.org/wp-content/uploads/2020/02/Encounters-w-jesus-16x9.jpg --create-dirs -o wp-content/uploads/2020/02/Encounters-w-jesus-16x9.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2020/02/Own-the-Vision-banner.jpg --create-dirs -o wp-content/uploads/2020/02/Own-the-Vision-banner.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2019/11/Revolution-Begins-Title-Slide-4x3.jpg --create-dirs -o wp-content/uploads/2019/11/Revolution-Begins-Title-Slide-4x3.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2019/09/Threads-web-title.jpg --create-dirs -o wp-content/uploads/2019/09/Threads-web-title.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2019/07/Dust-Title-16x9-1.jpg --create-dirs -o wp-content/uploads/2019/07/Dust-Title-16x9-1.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2019/05/7A8360E7-1154-4698-8D98-303C99DE5B5C.jpeg --create-dirs -o wp-content/uploads/2019/05/7A8360E7-1154-4698-8D98-303C99DE5B5C.jpeg
+curl https://www.avalonchurch.org/wp-content/uploads/2019/05/FAQ.jpg --create-dirs -o wp-content/uploads/2019/05/FAQ.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2019/02/Galatians-Main-Slide-Large-1-1080x675.jpg --create-dirs -o wp-content/uploads/2019/02/Galatians-Main-Slide-Large-1-1080x675.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2018/12/Jesus-and-We-6x4-1080x675.jpg --create-dirs -o wp-content/uploads/2018/12/Jesus-and-We-6x4-1080x675.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2018/12/48420151_2277809768904615_6562170378532159488_o-1080x675.jpg --create-dirs -o wp-content/uploads/2018/12/48420151_2277809768904615_6562170378532159488_o-1080x675.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2018/11/He-Will-Be-Called-English-4x3-1080x675.jpg --create-dirs -o wp-content/uploads/2018/11/He-Will-Be-Called-English-4x3-1080x675.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2018/10/43134796_2150330194985907_7313664053308555264_o.jpg --create-dirs -o wp-content/uploads/2018/10/43134796_2150330194985907_7313664053308555264_o.jpg
+curl https://www.avalonchurch.org/wp-content/uploads/2018/09/GO-Web-slide-1080x675.png --create-dirs -o wp-content/uploads/2018/09/GO-Web-slide-1080x675.png
+curl https://www.avalonchurch.org/wp-content/uploads/2018/08/Stories-updated-slide-Medium-1080x675.jpg --create-dirs -o wp-content/uploads/2018/08/Stories-updated-slide-Medium-1080x675.jpg
