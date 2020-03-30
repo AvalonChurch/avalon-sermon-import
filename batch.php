@@ -41,7 +41,7 @@ foreach($podcasts_data["podcasts"] as $podcast){
 	$audio_link = wp_upload_dir()['baseurl'] . $audio_base;
 
 	if (! file_exists($audio_file_path)) {
-		print('MP3 does not exist: '.$audio."\n");
+		print('MP3 does not exist: ' . $audio_file_path . "\n");
 		//UNCOMMENT IN PROD:
 		die;
 
