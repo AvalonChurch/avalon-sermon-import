@@ -64,7 +64,7 @@ foreach($podcasts_data as $podcast){
 	}
 	if (isset($images_done[$image_base])) {
 		$image_file_path = $images_done[$image_base]['path'];
-		$image_link = $images_done[$image_path]['link'];
+		$image_link = $images_done[$image_base]['link'];
 	} else {
 		$image_file_path = wp_upload_dir()['basedir'] . "/{$date['year_month']}/$image_base";
 		$image_link = wp_upload_dir()['baseurl']  . "/{$date['year_month']}/$image_base";
