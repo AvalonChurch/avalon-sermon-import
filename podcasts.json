@@ -14,7 +14,8 @@
         "he-will-be-called": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/11\/He-Will-Be-Called-English-4x3.jpg",
         "a-heart-to-heart": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/10\/43134796_2150330194985907_7313664053308555264_o.jpg",
         "go-vision-service": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/09\/GO-Web-slide.png",
-        "stories": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/08\/Stories-updated-slide-Medium.jpg"
+        "stories": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2018\/08\/Stories-updated-slide-Medium.jpg",
+        "uncertain-discovering-who-we-are-through-difficult-times": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2020\/03\/Uncertain-Small.jpg"
     },
     "podcasts": [
         {
@@ -885,7 +886,7 @@
             "pubDate": "2020-03-27 10:50:34",
             "slug": "dust-following-in-the-footsteps-of-jesus",
             "link": "https:\/\/www.avalonchurch.org\/2019\/08\/04\/dust-following-in-the-footsteps-of-jesus\/",
-            "date": "2019-09-15",
+            "date": "2019-09-08",
             "speaker": "Pastor Jim Groves",
             "audio": "https:\/\/www.avalonchurch.org\/wp-content\/uploads\/2020\/03\/dust-part-6-2019-09-08.mp3",
             "video": "https:\/\/www.facebook.com\/avalonchurch\/videos\/394449737934934\/",
@@ -1294,6 +1295,36 @@
             "video": "https:\/\/www.facebook.com\/avalonchurch\/videos\/221953635674557\/",
             "desc": "Worship Can Happen Anywhere! Message for Sunday, March 22, 2020. Jesus knows more about what is happening to us than we might think!",
             "blurb": "Video: https:\/\/www.facebook.com\/avalonchurch\/videos\/221953635674557\/\n\nWorship Can Happen Anywhere! Message for Sunday, March 22, 2020. Jesus knows more about what is happening to us than we might think!"
+        },
+        {
+            "title": "UNCERTAIN: Discovering Who We Are Through Difficult Times | PART 1",
+            "track": "01",
+            "title2": "PODCAST | PART 1",
+            "series": "UNCERTAIN: Discovering Who We Are Through Difficult Times",
+            "pubDate": "2020-03-27 10:50:34",
+            "slug": "uncertain-discovering-who-we-are-through-difficult-times",
+            "link": "https:\/\/www.avalonchurch.org\/2020\/02\/26\/encounters-with-jesus\/",
+            "date": "2020-03-29",
+            "speaker": "Pastor Don Dodge",
+            "audio": "https://www.avalonchurch.org/wp-content/uploads/sermons/2020/03/uncertain-part-1-2020-03-29.mp3",
+            "video": "https://www.facebook.com/avalonchurch/videos/616926708885529/",
+            "desc": "God has a way of using uncertainty to reveal who we really are. Let’s explore together how he is using the COVID-19 crisis to reveal our true identity in Jesus and to shape us to become more like him.",
+            "blurb": "Video: https://www.facebook.com/avalonchurch/videos/616926708885529/"
+        },
+        {
+            "title": "UNCERTAIN: Discovering Who We Are Through Difficult Times | PART 1",
+            "track": "01",
+            "title2": "PODCAST | PART 1",
+            "series": "UNCERTAIN: Discovering Who We Are Through Difficult Times",
+            "pubDate": "2020-03-27 10:50:34",
+            "slug": "uncertain-discovering-who-we-are-through-difficult-times",
+            "link": "https:\/\/www.avalonchurch.org\/2020\/02\/26\/encounters-with-jesus\/",
+            "date": "2020-03-29",
+            "speaker": "Pastor Don Dodge",
+            "audio": "https://www.avalonchurch.org/wp-content/uploads/sermons/2020/03/uncertain-part-1-2020-03-29.mp3",
+            "video": "https://www.facebook.com/avalonchurch/videos/616926708885529/",
+            "desc": "God has a way of using uncertainty to reveal who we really are. Let’s explore together how he is using the COVID-19 crisis to reveal our true identity in Jesus and to shape us to become more like him.",
+            "blurb": "Video: https://www.facebook.com/avalonchurch/videos/616926708885529/"
         }
     ]
 }
