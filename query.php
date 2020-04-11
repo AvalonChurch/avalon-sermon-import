@@ -6,12 +6,59 @@ $userId = 1;
 require_once('assets/getid3/getid3.php');
 require_once('assets/getid3/write.php');
 
-$my_dir = dirname(__FILE__);
-if (!file_exists($my_dir . "/podcasts_old.json")) {
-	die("NOT FOUND: " . $my_dir . "/podcasts_old.json");
+$sermons = array();
+$images = array();
+$audio = array();
+
+$posts = query_posts(array( 'post_type'=>'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'ASC'));
+foreach($posts as $post_key=>$post) {
+	$meta = get_post_meta($post->ID);
+	$series = wp_get_post_terms($post->ID, 'wpfc_sermon_series')[0];
+	$preachers = wp_get_post_terms($post->ID, 'wpfc_preacher')[0];
+	$image = array_values(get_attached_media( 'image', $post->ID))[0];
+	$image_meta = wp_get_attachment_metadata($image->ID);
+	$audio = array_values(get_attached_media( 'audio', $post->ID))[0];
+	$audio_meta = wp_get_attachment_metadata($audio->ID);
+
+	$data = array(
+	'post_date' => $post->post_date,
+	'post_content' => $post->post_content,
+	'post_name' => $post->post_name,
+	'post_modified' => date('Y-m-d H:i:s'),
+	'post_modified_gmt' => gmdate('Y-m-d H:i:s'),
+	'post_title' => $post->post_title,
+	'post_guid' => $post->guid,
+	'meta_sermon_audio' => $meta['sermon_audio'], // array
+	'meta_bible_passage' => $meta['bible_passage'], // array
+	'meta_sermon_description' => $meta['sermon_description'],
+	'meta__thumbnail_id' => $meta['_thumbnail_id'],
+	'preacher_name' => $preachers->name,
+	'preacher_slug' => $preachers->slug,
+	'series_name' => $series->name,
+	'series_slug' => $series->slug,
+	'image_ID' => $image->ID,
+	'image_post_name' => $image->post_name,
+	'image_post_title' => $image->post_title,
+	'image_guid' => $image->guid,
+	'image_meta_file' => $image_meta['file'],
+	'image_meta_sizes' => $image_meta['sizes'],
+	'audio_ID' => $audio->ID,
+	'audio_post_content' => $audio->post_content,
+	'audio_post_title' => $audio->post_title,
+	'audio_post_name' => $audio->post_name,
+	'audio_guid' => $audio->guid,
+	'audio_meta_title' => $audio_meta['title'],	
+	'audio_meta_artist' => $audio_meta['artist'],	
+	'audio_meta_album' => $audio_meta['album'],
+	'audio_meta_genre' => $audio_meta['genre'],
+	'audio_meta_comment' => $audio_meta['comment'],
+	'audio_meta_filesize' => $audio_meta['filesize'],
+	'audio_meta_track_number' => $audio_meta['track_number'],
+);
+	print_r($data);
 }
-$podcasts_data = json_decode(file_get_contents($my_dir . "/podcasts_old.json"), true);
-$images_done = array();
+die;
+
 foreach ($podcasts_data as $podcast) {
 	// if($podcast['title'] != 'Encounters with Jesus | PART 3') continue;
 	print("=====================\n\nPROCESSING: " . $podcast['title'] . "\n");
@@ -50,7 +97,7 @@ foreach ($podcasts_data as $podcast) {
 		if (!file_exists($dir)) {
 			mkdir($dir, 0777, true);
 		}
-		copy("no_recording.mp3", $audio_file_path);
+		copy("/home/jimgro7/old-rss/$audio_base", $audio_file_path);
 	}
 
 	$sermon_notes_link = null;
