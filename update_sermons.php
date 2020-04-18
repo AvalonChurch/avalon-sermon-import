@@ -299,7 +299,7 @@ function update_sermons()
 		    'filesize'=>$audio_filesize,
 			'track_number'=>$track,
 		));
-		$ret[] = update_post_meta($audio->ID, '_wp_attachment_file', $new_audio, $audio_meta['_wp_attachment_file']);
+		$ret[] = update_post_meta($audio->ID, '_wp_attached_file', $new_audio, $audio_meta['_wp_attached_file']);
 		$ret[] = update_post_meta($audio->ID, 'title', $title, $audio_meta['title']);
 		$ret[] = update_post_meta($audio->ID, 'artist', $preacher_names, $audio_meta['artist']);
 		$ret[] = update_post_meta($audio->ID, 'album', $series_names, $audio_meta['album']);
