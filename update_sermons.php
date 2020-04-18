@@ -45,7 +45,7 @@ function update_sermons()
 {
 	global $wpdb;
 
-	$posts = query_posts(array('post_type' => 'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'ASC'));
+	$posts = query_posts(array('post_type' => 'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'DESC'));
 	foreach ($posts as $post) {
 		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
