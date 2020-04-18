@@ -182,12 +182,12 @@ function update_sermons()
 		}
 
 		$old_audio_guid = $audio->guid;
-		$old_audio = str_ireplace(wp_upload_dir()['baseurl'], '', $old_audio_guid);
-		$new_audio = '/' . $date['year_month'] . '/' . $date['file_date'] . '_' . $post->post_name . '_' . $preacher_slug . '_ac.mp3';
+		$old_audio = str_ireplace(wp_upload_dir()['baseurl'] . '/', '', $old_audio_guid);
+		$new_audio = 'sermons/' . $date['year_month'] . '/' . $date['file_date'] . '_' . $post->post_name . '_' . $preacher_slug . '_ac.mp3';
 		$audio_name = pathinfo(basename($new_audio), PATHINFO_FILENAME);
-		$old_audio_file_path = wp_upload_dir()['basedir'] . $old_audio;
-		$audio_file_path = wp_upload_dir()['basedir'] . $new_audio;
-		$audio_guid = wp_upload_dir()['baseurl'] . $new_audio;
+		$old_audio_file_path = wp_upload_dir()['basedir'] . '/' . $old_audio;
+		$audio_file_path = wp_upload_dir()['basedir'] . '/' . $new_audio;
+		$audio_guid = wp_upload_dir()['baseurl'] . '/' . $new_audio;
 		$meta_sermon_audio = $audio_guid;
 
 		$tag_data = array(
@@ -302,6 +302,7 @@ function update_sermons()
 		    'filesize'=>$audio_filesize,
 			'track_number'=>$track,
 		));
+		$ret[] = update_post_meta($audio->ID, '_wp_attachment_file', $new_audio, $audio_meta['_wp_attachment_file']);
 		$ret[] = update_post_meta($audio->ID, 'title', $title, $audio_meta['title']);
 		$ret[] = update_post_meta($audio->ID, 'artist', $preacher_names, $audio_meta['artist']);
 		$ret[] = update_post_meta($audio->ID, 'album', $series_names, $audio_meta['album']);
