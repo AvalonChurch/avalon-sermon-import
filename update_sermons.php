@@ -47,10 +47,7 @@ function update_sermons()
 
 	$posts = query_posts(array('post_type' => 'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'ASC'));
 	foreach ($posts as $post) {
-		if ($post->ID != 225074)
-			continue;
-
-		print "============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
+		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
 		$meta = get_post_meta($post->ID);
 		$image_ID = $meta['_thumbnail_id'][0];
