@@ -144,8 +144,9 @@ function update_sermons()
 			$desc_lines[] = '<b>Scripture:</b> ' . $bible_passage;
 		}
 		if ($video) {
-			$desc_lines[] = '<b>Video:</b> ' . $video;
+			$desc_lines[] = '<b>Video:</b> <a href="' . $video . '">' . $video . '</a>';
 		}
+                $desc_lines[] = '<b>Website:</b> <a href="' . $post->guid . '">' . $post->guid . '</a>';
 
 		if ($notes) {
 			// $notes = preg_replace('/Week (\d+)/i', 'PART $1', $notes);
