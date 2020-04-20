@@ -50,6 +50,14 @@ function update_sermons()
 		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
 		$meta = get_post_meta($post->ID);
+		$sermon_notes = null;
+		if (isset($meta['sermon_notes_id'])) {
+			$sermon_notes = get_post($meta['sermon_notes_id']);
+		}
+		$sermon_bulletin = null;
+		if (isset($meta['sermon_bulletin_id'])) {
+			$sermon_bulletin = get_post($meta['sermon_bulletin_id']);
+		}
 		$image_ID = $meta['_thumbnail_id'][0];
 		$meta_sermon_audio = $meta['sermon_audio'][0];
 		$sql_prep = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid = %s AND post_type = 'attachment' AND post_status = 'inherit'", $meta_sermon_audio);
@@ -148,7 +156,13 @@ function update_sermons()
 		if ($video) {
 			$desc_lines[] = '<b>Video:</b> <a href="' . $video . '">' . $video . '</a>';
 		}
-                $desc_lines[] = '<b>Website:</b> <a href="' . $post->guid . '">' . $post->guid . '</a>';
+		$desc_lines[] = '<b>Sermon page:</b> <a href="' . $post->guid . '">' . $post->guid . '</a>';
+		if ($sermon_notes) {
+			$desc_lines[] = '<b>Sermon Notes:</b> <a href="' . $sermon_notes->guid . '">' . basename($sermon_notes->guid) . '</a>';
+		}
+		if ($sermon_bulletin) {
+			$desc_lines[] = '<b>Discussion Questions:</b> <a href="' . $sermon_bulletin->guid . '">' . basename($sermon_bulletin->guid) . '</a>';
+		}
 
 		if ($notes) {
 			// $notes = preg_replace('/Week (\d+)/i', 'PART $1', $notes);
@@ -277,6 +291,7 @@ function update_sermons()
 		$ret[] = update_post_meta($post->ID, 'sermon_description', $meta_sermon_description, $meta['sermon_description'][0]);
 		$ret[] = update_post_meta($post->ID, 'bible_passage', $bible_passage, $meta['bible_passage'][0]);
 		$ret[] = update_post_meta($post->ID, 'sermon_audio', $meta_sermon_audio, $meta['sermon_audio'][0]);
+		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize, (isset($meta['_wpfc_sermon_size'])?$meta['_wpfc_sermon_size']:null))
 
 		print_r($bible_book_items);
 		$ret[] = wp_set_post_terms($post->ID, $bible_book_items, 'wpfc_bible_book', true);
