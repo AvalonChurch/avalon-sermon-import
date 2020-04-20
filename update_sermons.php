@@ -108,10 +108,15 @@ function update_sermons()
 			$track = str_pad($matches[1], 2, '0', STR_PAD_LEFT);
 		}
 
-		$desc_lines = array(
-			"<b>Series:</b> {$series_names}",
-			"<b>Speaker:</b> {$preacher_names}",
-		);
+		$desc_lines = array();
+		if ($excerpt && strpos($desc, $excerpt) === false) {
+			$desc_excerpt = $excerpt;
+			if (strpos($excerpt, '<p') === false)
+				$desc_excerpt = "<p>$excerpt</p>\n<br/>\n";
+			$desc_lines = $desc_excerpt; 
+		}
+		$desc_lines[] = "<b>Series:</b> {$series_names}";
+		$desc_lines[] = "<b>Speaker:</b> {$preacher_names}";
 
 		if (strpos($desc, '<div class="notes">') !== false) {
 			$notes = explode('<div class="notes">', $desc)[1];
