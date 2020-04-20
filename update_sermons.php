@@ -94,7 +94,7 @@ function update_sermons()
 		$excerpt = $post->post_excerpt;
 		$desc = trim($meta['sermon_description'][0]);
 		$video = trim($meta['sermon_video_link'][0]);
-		$track = $audio_meta['track_number'];
+		$track = (isset($audio_meta['track_number'])?$audio_meta['track_number']:'01');
 		if (! trim($track))
 			$track = '01';
 
@@ -115,6 +115,7 @@ function update_sermons()
 		if (strpos($desc, '<div class="notes">') !== false) {
 			$notes = explode('<div class="notes">', $desc)[1];
 			$notes = str_replace('<b>Notes:</b>', '', $notes);
+			$notes = preg_replace('/^([\r\n\s]*<br\s*\/>[\r\n\s]*)+/i', '', $notes);
 			$notes = str_replace('</div>', '', $notes);
 			$notes = trim($notes);
 		} else {
