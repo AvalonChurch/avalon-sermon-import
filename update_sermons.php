@@ -51,11 +51,8 @@ function update_sermons()
 
 		$meta = get_post_meta($post->ID);
 		$sermon_notes = null;
-		print_r($meta);
 		if (isset($meta['sermon_notes_id']) && $meta['sermon_notes_id'][0]) {
 			$sermon_notes = get_post($meta['sermon_notes_id'][0]);
-			print_r($sermon_notes);
-			die;
 		}
 		$sermon_bulletin = null;
 		if (isset($meta['sermon_bulletin_id']) && $meta['sermon_bulletin_id'][0]) {
