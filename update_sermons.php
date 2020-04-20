@@ -85,6 +85,8 @@ function update_sermons()
 		$desc = trim($meta['sermon_description'][0]);
 		$video = trim($meta['sermon_video_link'][0]);
 		$track = $audio_meta['track_number'];
+		if (! trim($track))
+			$track = '01';
 
 		$preacher_names = implode(', ', array_map(function($obj) { return $obj->name; }, $preachers));
 		$series_names = implode(', ', array_map(function($obj) { return $obj->name; }, $series));
