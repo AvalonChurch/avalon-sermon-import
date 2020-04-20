@@ -51,6 +51,7 @@ function update_sermons()
 
 		$meta = get_post_meta($post->ID);
 		$sermon_notes = null;
+		print_r($meta);
 		if (isset($meta['sermon_notes_id']) && $meta['sermon_notes_id'][0]) {
 			$sermon_notes = get_post($meta['sermon_notes_id'][0]);
 			print_r($sermon_notes);
@@ -158,7 +159,7 @@ function update_sermons()
 		if ($video) {
 			$desc_lines[] = '<b>Video:</b> <a href="' . $video . '">' . $video . '</a>';
 		}
-		$post_uri = get_post_uri($post);
+		$post_uri = get_page_uri($post);
 		$desc_lines[] = '<b>Sermon page:</b> <a href="' . $post_uri . '">' . $post_uri . '</a>';
 		if ($sermon_notes) {
 			$desc_lines[] = '<b>Sermon Notes:</b> <a href="' . $sermon_notes->guid . '">' . basename($sermon_notes->guid) . '</a>';
