@@ -298,7 +298,7 @@ function update_sermons()
 		    'album'=>$series_names,
 		    'genre'=>'Podcast',
 		    'filesize'=>$audio_filesize,
-			'track_number'=>$track,
+		    'track_number'=>$track,
 		));
 		$ret[] = update_post_meta($audio->ID, '_wp_attached_file', $new_audio, $audio_meta['_wp_attached_file']);
 		$ret[] = update_post_meta($audio->ID, 'title', $title, $audio_meta['title']);
