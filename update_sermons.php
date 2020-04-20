@@ -109,12 +109,9 @@ function update_sermons()
 		}
 
 		$desc_lines = array();
-		if ($excerpt && strpos($desc, $excerpt) === false) {
-			$desc_excerpt = $excerpt;
-			if (strpos($excerpt, '<p') === false)
-				$desc_excerpt = "$excerpt<br/> <br/>\n";
-			$desc_lines[] = $desc_excerpt; 
-		}
+		if ($excerpt)
+			$desc_lines[] = "$excerpt<br/> <br/>\n"; 
+
 		$desc_lines[] = "<b>Series:</b> {$series_names}";
 		$desc_lines[] = "<b>Speaker:</b> {$preacher_names}";
 
