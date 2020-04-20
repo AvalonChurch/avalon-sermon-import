@@ -109,9 +109,6 @@ function update_sermons()
 		}
 
 		$desc_lines = array();
-		if ($excerpt)
-			$desc_lines[] = "$excerpt<br/> <br/>\n"; 
-
 		$desc_lines[] = "<b>Series:</b> {$series_names}";
 		$desc_lines[] = "<b>Speaker:</b> {$preacher_names}";
 
@@ -185,7 +182,10 @@ function update_sermons()
 				$notes = preg_replace('/(^|\n)(Scripture[: ]*)*' . preg_quote($bible_passage) . '\s*(\n|$)/i', '$1', $notes);
 		}
 
-		$meta_sermon_description = implode(", <br/>\n", $desc_lines);
+		$meta_sermon_description = '';
+		if ($excerpt)
+			$meta_sermon_description .= "$excerpt<br/> <br/>\n"; 
+		$meta_sermon_description .= implode(", <br/>\n", $desc_lines);
 		if ($notes) {
 			$meta_sermon_description .= ", <br/>";
 		}
