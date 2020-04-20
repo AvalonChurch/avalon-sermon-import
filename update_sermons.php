@@ -112,18 +112,18 @@ function update_sermons()
 		$desc_lines[] = "<b>Series:</b> {$series_names}";
 		$desc_lines[] = "<b>Speaker:</b> {$preacher_names}";
 
+		$notes = '';
 		if (strpos($desc, '<div class="notes">') !== false) {
 			$notes = explode('<div class="notes">', $desc)[1];
 			$notes = str_replace('<b>Notes:</b>', '', $notes);
 			$notes = preg_replace('/^([\r\n\s]*<br\s*\/>[\r\n\s]*)+/i', '', $notes);
 			$notes = str_replace('</div>', '', $notes);
 			$notes = trim($notes);
-		} else {
+			if ($notes == $excerpt) {
+				$notes = '';
+			}
+		} else if ($desc != $excerpt) {
 			$notes = $desc;
-		}
-
-		if (! $notes) {
-			$notes = trim($excerpt);
 		}
 
 		$bible_passage_items = array();
