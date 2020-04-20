@@ -51,14 +51,14 @@ function update_sermons()
 
 		$meta = get_post_meta($post->ID);
 		$sermon_notes = null;
-		if (isset($meta['sermon_notes_id'])) {
-			$sermon_notes = get_post($meta['sermon_notes_id']);
+		if (isset($meta['sermon_notes_id']) && $meta['sermon_notes_id'][0]) {
+			$sermon_notes = get_post($meta['sermon_notes_id'][0]);
 			print_r($sermon_notes);
 			die;
 		}
 		$sermon_bulletin = null;
-		if (isset($meta['sermon_bulletin_id'])) {
-			$sermon_bulletin = get_post($meta['sermon_bulletin_id']);
+		if (isset($meta['sermon_bulletin_id']) && $meta['sermon_bulletin_id'][0]) {
+			$sermon_bulletin = get_post($meta['sermon_bulletin_id'][0]);
 		}
 		$image_ID = $meta['_thumbnail_id'][0];
 		$meta_sermon_audio = $meta['sermon_audio'][0];
