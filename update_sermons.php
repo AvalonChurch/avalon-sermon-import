@@ -323,12 +323,12 @@ function update_sermons()
 		    'track_number'=>$track,
 		));
 		$ret[] = update_post_meta($audio->ID, '_wp_attached_file', $new_audio, (isset($audio_meta['_wp_attached_file'])?$audio_meta['_wp_attached_file']:''));
-		$ret[] = update_post_meta($audio->ID, 'title', $title, $audio_meta['title']);
-		$ret[] = update_post_meta($audio->ID, 'artist', $preacher_names, $audio_meta['artist']);
-		$ret[] = update_post_meta($audio->ID, 'album', $series_names, $audio_meta['album']);
-		$ret[] = update_post_meta($audio->ID, 'genre', 'Podcast', $audio_meta['genre']);
-		$ret[] = update_post_meta($audio->ID, 'filesize', $audio_filesize, $audio_meta['filesize']);
-		$ret[] = update_post_meta($audio->ID, 'track_number', $track, $audio_meta['track_number']);
+		$ret[] = update_post_meta($audio->ID, 'title', $title, (isset($audio_meta['title'])?$audio_meta['title']:''));
+		$ret[] = update_post_meta($audio->ID, 'artist', $preacher_names, (isset($audio_meta['artist'])?$audio_meta['artist']:''));
+		$ret[] = update_post_meta($audio->ID, 'album', $series_names, (isset($audio_meta['album'])?$audio_meta['album']:''));
+		$ret[] = update_post_meta($audio->ID, 'genre', 'Podcast', (isset($audio_meta['genre'])?$audio_meta['genre']:''));
+		$ret[] = update_post_meta($audio->ID, 'filesize', $audio_filesize, (isset($audio_meta['filesize'])?$audio_meta['filesize']:''));
+		$ret[] = update_post_meta($audio->ID, 'track_number', $track, (isset($audio_meta['track_number'])?$audio_meta['track_number']:''));
 
 		$audio_attachment_data = wp_generate_attachment_metadata($audio->ID, $audio_file_path);
 		print_r($audio_attachment_data);
