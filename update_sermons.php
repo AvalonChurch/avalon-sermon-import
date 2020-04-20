@@ -156,8 +156,8 @@ function update_sermons()
 		if ($video) {
 			$desc_lines[] = '<b>Video:</b> <a href="' . $video . '">' . $video . '</a>';
 		}
-		$post_uri = get_page_uri($post);
-		$desc_lines[] = '<b>Sermon page:</b> <a href="' . $post_uri . '">' . $post_uri . '</a>';
+		$permalink = get_permalink($post);
+		$desc_lines[] = '<b>Sermon page:</b> <a href="' . $permalink . '">' . $permalink . '</a>';
 		if ($sermon_notes) {
 			$desc_lines[] = '<b>Sermon Notes:</b> <a href="' . $sermon_notes->guid . '">' . basename($sermon_notes->guid) . '</a>';
 		}
