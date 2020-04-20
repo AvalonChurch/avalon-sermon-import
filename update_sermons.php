@@ -50,6 +50,7 @@ function update_sermons()
 		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
 		$meta = get_post_meta($post->ID);
+		print_r($meta);
 		$sermon_notes = null;
 		if (isset($meta['sermon_notes_id']) && $meta['sermon_notes_id'][0]) {
 			$sermon_notes = get_post($meta['sermon_notes_id'][0]);
@@ -296,7 +297,7 @@ function update_sermons()
 		$ret[] = update_post_meta($post->ID, 'sermon_description', $meta_sermon_description, $meta['sermon_description'][0]);
 		$ret[] = update_post_meta($post->ID, 'bible_passage', $bible_passage, $meta['bible_passage'][0]);
 		$ret[] = update_post_meta($post->ID, 'sermon_audio', $meta_sermon_audio, $meta['sermon_audio'][0]);
-		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize, (isset($meta['_wpfc_sermon_size'])?(is_array($meta['_wpfc_sermon-size'])?$meta['_wpfc_sermon_size'][0]:$meta['_wpfc_sermon_size']):''));
+		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize);
 
 		print_r($bible_book_items);
 		$ret[] = wp_set_post_terms($post->ID, $bible_book_items, 'wpfc_bible_book', true);
