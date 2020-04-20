@@ -13,7 +13,7 @@ function get_bible_info($text, $passages = array(), $books = array())
 			$possible_refs[] = $lower_name;
 		}
 	}
-	$pattern = '/(' . implode('|', $possible_refs) . ') (\d+[\d:-]*)/i';
+	$pattern = '/(' . implode('|', $possible_refs) . ')\.* (\d+[\d:-]*)/i';
 	preg_match_all($pattern, $text, $matches);
 	if ($matches) {
 		echo "TEXT: $text\n";
@@ -308,6 +308,9 @@ function update_sermons()
 		$ret[] = update_post_meta($audio->ID, 'filesize', $audio_filesize, $audio_meta['filesize']);
 		$ret[] = update_post_meta($audio->ID, 'track_number', $track, $audio_meta['track_number']);
 
+		$audio_attachment_data = wp_generate_attachment_metadata($audio->ID, $audio_file_path);
+		print_r($audio_attachment_data);
+		$ret[] = wp_update_attachment_metadata($audio->ID, $audio_attachment_data);
 		print_r($ret);
 
 		print_r(array($old_audio_file_path, $old_audio, $new_audio));
