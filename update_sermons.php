@@ -296,7 +296,7 @@ function update_sermons()
 		$ret[] = update_post_meta($post->ID, 'sermon_description', $meta_sermon_description, $meta['sermon_description'][0]);
 		$ret[] = update_post_meta($post->ID, 'bible_passage', $bible_passage, $meta['bible_passage'][0]);
 		$ret[] = update_post_meta($post->ID, 'sermon_audio', $meta_sermon_audio, $meta['sermon_audio'][0]);
-		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize, (isset($meta['_wpfc_sermon_size'])?$meta['_wpfc_sermon_size']:null));
+		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize, (isset($meta['_wpfc_sermon_size'])?$meta['_wpfc_sermon_size']:''));
 
 		print_r($bible_book_items);
 		$ret[] = wp_set_post_terms($post->ID, $bible_book_items, 'wpfc_bible_book', true);
@@ -322,7 +322,7 @@ function update_sermons()
 		    'filesize'=>$audio_filesize,
 		    'track_number'=>$track,
 		));
-		$ret[] = update_post_meta($audio->ID, '_wp_attached_file', $new_audio, (isset($audio_meta['_wp_attached_file'])?$audio_meta['_wp_attached_file']:null));
+		$ret[] = update_post_meta($audio->ID, '_wp_attached_file', $new_audio, (isset($audio_meta['_wp_attached_file'])?$audio_meta['_wp_attached_file']:''));
 		$ret[] = update_post_meta($audio->ID, 'title', $title, $audio_meta['title']);
 		$ret[] = update_post_meta($audio->ID, 'artist', $preacher_names, $audio_meta['artist']);
 		$ret[] = update_post_meta($audio->ID, 'album', $series_names, $audio_meta['album']);
