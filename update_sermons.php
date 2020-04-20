@@ -57,6 +57,8 @@ function update_sermons()
 		$sermon_bulletin = null;
 		if (isset($meta['sermon_bulletin_id']) && $meta['sermon_bulletin_id'][0]) {
 			$sermon_bulletin = get_post($meta['sermon_bulletin_id'][0]);
+			print_r($sermon_bulletin);
+			die;
 		}
 		$image_ID = $meta['_thumbnail_id'][0];
 		$meta_sermon_audio = $meta['sermon_audio'][0];
@@ -157,6 +159,8 @@ function update_sermons()
 			$desc_lines[] = '<b>Video:</b> <a href="' . $video . '">' . $video . '</a>';
 		}
 		$permalink = get_permalink($post);
+		print_r(array("PERMALINK", $permalink));
+		die;
 		$desc_lines[] = '<b>Sermon page:</b> <a href="' . $permalink . '">' . $permalink . '</a>';
 		if ($sermon_notes) {
 			$desc_lines[] = '<b>Sermon Notes:</b> <a href="' . $sermon_notes->guid . '">' . basename($sermon_notes->guid) . '</a>';
