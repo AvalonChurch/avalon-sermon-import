@@ -46,7 +46,7 @@ function update_sermons()
 	global $wpdb;
 
 	$posts = query_posts(array('post_type' => 'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'DESC'));
-	foreach ($posts as $post) {
+	foreach ($posts as $post_idx=>$post) {
 		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
 		$meta = get_post_meta($post->ID);
@@ -339,6 +339,8 @@ function update_sermons()
 		print_r($ret);
 
 		print_r(array($old_audio_file_path, $old_audio, $new_audio));
+		if($post_idx >= 0)
+		    break;
 	}
 }
 
