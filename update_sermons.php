@@ -291,6 +291,10 @@ function update_sermons()
 		print_r($post);
 		$ret[] = wp_update_post($post);
 
+		if (! wp_get_object_terms(array($post->ID), array('wpfc_service_type'))) {
+			wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
+		}
+
 		print_r(array(
 			'sermon_description'=>$meta_sermon_description, 
 			'bible_passage'=>$bible_passage, 
