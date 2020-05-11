@@ -310,26 +310,24 @@ function update_sermons()
 		$ret[] = wp_update_post($post);
 
 		$service_types = wp_get_object_terms(array($post->ID), array('wpfc_service_type'));
-		$service_type_id = null;
+		$service_type_term_id = null;
 		if (! $service_types) {
 			$term_taxonomy_ids = wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
 			print_r($term_taxonomy_ids);
 			if ($term_taxonomy_ids) {
 				$term = get_term_by('term_taxonomy_id', $term_taxonomy_ids[0]);
-				print("HERE!!\n");
-				print_r($term);
+				if ($term)
+					$service_type_term_id = $term->term_id;
 			}
 		} else {
-			$service_type_id = $service_types[0]->term_taxonomy_id;
-			print_r($service_types);
+			$service_type_term_id = $service_types[0]->term_taxonomy_id;
 		}
-		die;
 
 		print_r(array(
 			'sermon_description'=>$meta_sermon_description, 
 			'bible_passage'=>$bible_passage, 
 			'sermon_audio'=>$meta_sermon_audio,
-			'wpfc_service_type'=>$service_type_id,
+			'wpfc_service_type'=>$service_type_term_id,
 			'_wpfc_sermon_size'=>$audio_filesize,
 			'_wpfc_sermon_duration'=>$audio_duration,
 		));
@@ -338,7 +336,7 @@ function update_sermons()
 		$ret[] = update_post_meta($post->ID, 'sermon_audio', $meta_sermon_audio, $meta['sermon_audio'][0]);
 		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize);
 		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_duration', $audio_duration);
-		$ret[] = update_post_meta($post->ID, 'wpfc_service_type', $service_type_id);
+		$ret[] = update_post_meta($post->ID, 'wpfc_service_type', $service_type_term_id);
 
 		print_r($bible_book_items);
 		$ret[] = wp_set_post_terms($post->ID, $bible_book_items, 'wpfc_bible_book', true);
