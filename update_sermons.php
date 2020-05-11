@@ -316,7 +316,8 @@ function update_sermons()
 			print_r($term_taxonomy_ids);
 			if ($term_taxonomy_ids) {
 				$term = get_term_by('term_taxonomy_id', $term_taxonomy_ids[0]);
-				print_r($term->ID);
+				print("HERE!!\n");
+				print_r($term);
 			}
 		} else {
 			$service_type_id = $service_types[0]->term_taxonomy_id;
