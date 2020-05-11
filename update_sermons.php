@@ -313,8 +313,8 @@ function update_sermons()
 		$service_type_id = null;
 		if (! $service_types) {
 			$terms = wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
+			print_r($terms);
 			if ($terms) {
-				$term_id = $terms[0];
 				$term = get_term($terms[0]);
 				print_r($term);
 				die;
