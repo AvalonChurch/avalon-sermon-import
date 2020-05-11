@@ -47,6 +47,10 @@ function update_sermons()
 
 	$posts = query_posts(array('post_type' => 'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'DESC'));
 	foreach ($posts as $post_idx=>$post) {
+		if(wp_get_object_terms(array($post->ID), array('wpfc_service_type'))) {
+		print_r(wp_get_object_terms(array($post->ID), array('wpfc_service_type')));
+		die;
+		}
 		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
 		$meta = get_post_meta($post->ID);
