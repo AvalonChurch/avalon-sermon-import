@@ -315,7 +315,7 @@ function update_sermons()
 			$terms = wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
 			if ($terms) {
 				$term_id = $terms[0];
-				$term = get_term($terms[0])
+				$term = get_term($terms[0]);
 				print_r($term);
 				die;
 			}
