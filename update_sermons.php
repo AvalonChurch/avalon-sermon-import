@@ -41,16 +41,28 @@ function get_bible_info($text, $passages = array(), $books = array())
 	return array($passages, $books);
 }
 
+// Format to AA::BB:CC
+function format_duration($duration){
+
+    // The base case is A:BB
+    if(strlen($duration) == 4){
+        return "00:0" . $duration;
+    }
+    // If AA:BB
+    else if(strlen($duration) == 5){
+        return "00:" . $duration;
+    }   // If A:BB:CC
+    else if(strlen($duration) == 7){
+        return "0" . $duration;
+    }
+}
+
 function update_sermons()
 {
 	global $wpdb;
 
 	$posts = query_posts(array('post_type' => 'wpfc_sermon', 'posts_per_page' => -1, 'orderby' => 'post_date', 'order' => 'DESC'));
 	foreach ($posts as $post_idx=>$post) {
-		if(wp_get_object_terms(array($post->ID), array('wpfc_service_type'))) {
-		print_r(wp_get_object_terms(array($post->ID), array('wpfc_service_type')));
-		die;
-		}
 		print "\n\n============\nPROCESSING: {$post->post_title} ({$post->ID})\n";
 
 		$meta = get_post_meta($post->ID);
@@ -268,9 +280,11 @@ function update_sermons()
 		} else {
 			die("Failed to write tags! Errors:\n" . implode("\n", $tagwriter->errors));
 		}
-		$audio_filesize = filesize($audio_file_path);
-		// REMOVE IN REAL
-		// $audio_filesize = filesize($old_audio_file_path);
+
+		$getID3 = new getID3;
+		$file = $getID3->analyze($audio_file_path);
+		$audio_duration = format_duration($file['playtime_string']);
+		$audio_filesize = $file['filesize'];
 
 		$post_content_items = array();
 		if ($bible_passage) {
@@ -295,19 +309,31 @@ function update_sermons()
 		print_r($post);
 		$ret[] = wp_update_post($post);
 
-		if (! wp_get_object_terms(array($post->ID), array('wpfc_service_type'))) {
-			wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
+		$service_types = wp_get_object_terms(array($post->ID), array('wpfc_service_type'));
+		$service_type_id = null;
+		if (! $service_types) {
+			$terms = wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
+			if ($terms) {
+				$service_type_id = $terms[0];
+			}
+		} else {
+			$service_type_id = $service_types[0]->term_id;
 		}
 
 		print_r(array(
 			'sermon_description'=>$meta_sermon_description, 
 			'bible_passage'=>$bible_passage, 
-			'sermon_audio'=>$meta_sermon_audio
+			'sermon_audio'=>$meta_sermon_audio,
+			'wpfc_service_type'=>$service_type_id,
+			'_wpfc_sermon_size'=>$audio_filesize,
+			'_wpfc_sermon_duration'=>$audio_duration,
 		));
 		$ret[] = update_post_meta($post->ID, 'sermon_description', $meta_sermon_description, $meta['sermon_description'][0]);
 		$ret[] = update_post_meta($post->ID, 'bible_passage', $bible_passage, $meta['bible_passage'][0]);
 		$ret[] = update_post_meta($post->ID, 'sermon_audio', $meta_sermon_audio, $meta['sermon_audio'][0]);
 		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_size', $audio_filesize);
+		$ret[] = update_post_meta($post->ID, '_wpfc_sermon_duration', $audio_duration);
+		$ret[] = update_post_meta($post->ID, 'wpfc_service_type', $service_type_id);
 
 		print_r($bible_book_items);
 		$ret[] = wp_set_post_terms($post->ID, $bible_book_items, 'wpfc_bible_book', true);
@@ -347,8 +373,8 @@ function update_sermons()
 		print_r($ret);
 
 		print_r(array($old_audio_file_path, $old_audio, $new_audio));
-		if($post_idx >= 0)
-		    break;
+		// if($post_idx >= 0)
+		//     break;
 	}
 }
 
