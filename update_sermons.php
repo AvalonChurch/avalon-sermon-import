@@ -320,7 +320,7 @@ function update_sermons()
 					$service_type_term_id = $term->term_id;
 			}
 		} else {
-			$service_type_term_id = $service_types[0]->term_taxonomy_id;
+			$service_type_term_id = $service_types[0]->term_id;
 		}
 
 		print_r(array(
