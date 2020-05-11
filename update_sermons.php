@@ -314,10 +314,15 @@ function update_sermons()
 		if (! $service_types) {
 			$terms = wp_set_object_terms($post->ID, 'Sunday Service', 'wpfc_service_type');
 			if ($terms) {
-				$service_type_id = $terms[0];
+				$term_id = $terms[0];
+				$term = get_term($terms[0])
+				print_r($term);
+				die;
 			}
 		} else {
-			$service_type_id = $service_types[0]->term_id;
+			$service_type_id = $service_types[0]->term_taxonomy_id;
+			print_r($service_types);
+			die;
 		}
 
 		print_r(array(
